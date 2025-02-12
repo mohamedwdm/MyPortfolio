@@ -3,7 +3,10 @@ import { fadeInUp, staggerContainer } from "../utils/animations";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-white dark:bg-gray-800 transition-colors duration-200">
+    <section
+      id="about"
+      className="py-20 bg-white dark:bg-gray-800 transition-colors duration-200"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white"
@@ -36,18 +39,27 @@ export default function About() {
           </div>
 
           <motion.div className="space-y-6" variants={staggerContainer}>
-            <motion.p className="text-2xl md:text-2xl text-gray-900 dark:text-gray-100" variants={fadeInUp}>
-              Hi, I'm Piyush Agarwal, a passionate Full Stack Developer and
-              educator. I create content on YouTube through my channel
-              RoadsideCoder, where I share my knowledge and experience with the
-              developer community.
+            <motion.p
+              className="text-2xl md:text-2xl text-gray-900 dark:text-gray-100"
+              variants={fadeInUp}
+            >
+              Hi, I'm Mohamed Awad, a passionate Software Engineer specializing
+              in Mobile App Development with Flutter.
+              With a strong foundation in both mobile and web technologies, I
+              create seamless, cross-platform applications that deliver
+              exceptional user experiences.
             </motion.p>
 
-            <motion.p className="text-2xl md:text-2xl text-gray-900 dark:text-gray-100" variants={fadeInUp}>
-              With extensive experience in modern web technologies and a strong
-              foundation in both frontend and backend development, I help
-              businesses build scalable solutions and mentor aspiring developers
-              to achieve their goals.
+            <motion.p
+              className="text-2xl md:text-2xl text-gray-900 dark:text-gray-100"
+              variants={fadeInUp}
+            >
+              My expertise spans across Flutter, Dart, Firebase, and various web
+              technologies. I'm dedicated to writing clean, efficient code and
+              building scalable solutions that solve real-world problems.
+              Whether it's developing a complex mobile application or creating
+              robust web solutions, I'm always excited to take on new challenges
+              and bring innovative ideas to life.
             </motion.p>
           </motion.div>
         </motion.div>
