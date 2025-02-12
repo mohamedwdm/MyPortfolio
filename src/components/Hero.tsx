@@ -5,7 +5,7 @@ import { fadeInUp, staggerContainer } from '../utils/animations';
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative bg-gray-900 dark:bg-black transition-colors duration-200 overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-gray-900 via-gray-800 to-black transition-colors duration-200 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute w-full h-full">
@@ -100,19 +100,19 @@ export default function Hero() {
               className="block text-white opacity-90 mb-2"
               variants={fadeInUp}
             >
-              Crafting Digital Experiences
+              Transforming Ideas Into
             </motion.span>
             <motion.span 
               className={`block ${gradientText} mb-2`}
               variants={fadeInUp}
             >
-              Mobile & Web Solutions
+              Digital Reality
             </motion.span>
             <motion.span 
               className="block text-white opacity-90"
               variants={fadeInUp}
             >
-              That Matter
+              One App at a Time
             </motion.span>
           </motion.h1>
 
