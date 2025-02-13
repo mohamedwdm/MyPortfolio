@@ -1,9 +1,19 @@
 import { ArrowDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-//import { gradientText, gradientBg, gradientHover } from '../utils/gradients';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 export default function Hero() {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-gray-900 via-gray-800 to-black transition-colors duration-200 overflow-hidden">
       {/* Animated Background Elements */}
@@ -76,7 +86,7 @@ export default function Hero() {
         initial="initial"
         animate="animate"
       >
-                <div className="space-y-8">
+        <div className="space-y-8">
           <motion.div
             className="inline-block"
             initial={{ opacity: 0, scale: 0.5 }}
@@ -131,13 +141,7 @@ export default function Hero() {
               whileHover={{ scale: 1.05 }}
             >
               Flutter Developer
-            </motion.span> 
-            {/* <motion.span 
-              className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-300"
-              whileHover={{ scale: 1.05 }}
-            >
-              Problem Solver
-            </motion.span> */}
+            </motion.span>
           </motion.p>
 
           <motion.div 
@@ -146,6 +150,7 @@ export default function Hero() {
           >
             <motion.a
               href="#projects"
+              onClick={(e) => scrollToSection(e, 'projects')}
               className="group relative px-8 py-4 rounded-full text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-cyan-500/25 overflow-hidden"
               whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(6, 182, 212, 0.3)" }}
               whileTap={{ scale: 0.95 }}
@@ -160,6 +165,7 @@ export default function Hero() {
             </motion.a>
             <motion.a
               href="#contact"
+              onClick={(e) => scrollToSection(e, 'contact')}
               className="group relative px-8 py-4 rounded-full text-white border-2 border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 overflow-hidden backdrop-blur-sm"
               whileHover={{ scale: 1.05, borderColor: "rgba(6, 182, 212, 0.4)" }}
               whileTap={{ scale: 0.95 }}

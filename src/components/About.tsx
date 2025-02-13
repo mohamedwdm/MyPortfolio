@@ -31,7 +31,7 @@ export default function About() {
               variants={fadeInUp}
             >
               <img
-                src="/mo.jpg"
+                src="/mo4.png"
                 alt="Mohamed Awad"
                 className="w-full h-full object-cover rounded-full"
               />
