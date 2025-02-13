@@ -12,7 +12,7 @@ export interface ProjectItem {
   image: string;
   tech: string[];
   github: string;
-  //live: string;
+  live?: string;
    details?: {
      descreption?: string;
   //   solution?: string;

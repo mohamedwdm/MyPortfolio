@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github } from 'lucide-react';
-import { ProjectItem } from '../types';
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Github, ExternalLink } from "lucide-react";
+import { ProjectItem } from "../types";
 
 interface ProjectModalProps {
   project: ProjectItem;
@@ -8,7 +8,11 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-export default function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+export default function ProjectModal({
+  project,
+  isOpen,
+  onClose,
+}: ProjectModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -42,8 +46,12 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
             </div>
 
             <div className="p-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">{project.details?.descreption}</p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                {project.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                {project.details?.descreption}
+              </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech, index) => (
@@ -56,16 +64,29 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 ))}
               </div>
 
-              <div className="flex gap-4 mt-6 pt-6 border-t dark:border-gray-600">
+              <div className="flex gap-4">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors"
+                  className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <Github className="w-5 h-5" />
-                  View Code
+                  Code
                 </a>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    Live Demo
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
