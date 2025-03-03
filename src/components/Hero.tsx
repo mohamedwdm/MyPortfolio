@@ -197,7 +197,7 @@ export default function Hero() {
               ease: "easeInOut"
             }}
           >
-            <ArrowDown className="w-6 h-6 text-cyan-500/70 animate-pulse" />
+            <ArrowDown className="w-8 h-8 text-cyan-500/70 animate-pulse" />
           </motion.div>
         </motion.div>
       </motion.div>

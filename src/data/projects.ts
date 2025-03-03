@@ -18,7 +18,7 @@ export const projectsData: ProjectItem[] = [
     breif: "SkyCast: A simple Flutter weather app with real-time updates, dynamic theming, and state management using Cubit",
     image: "/weather1.png",
     tech: ["Flutter", "Dart", "REST APIs" , "Cubit (Bloc)","Dynamic Theming",/*"Responsive UI Design "*/],
-    github: "https://github.com/mohamedwdm/SkyCast_Weather_App_SourceCode.git",
+    github: "https://github.com/mohamedwdm/SkyCast_Weather_App.git",
     live: "https://mohamedwdm.github.io/SkyCast_Weather_App_hosting/",
     details:{
       descreption:"SkyCast is a Flutter-based weather app that provides real-time weather information for any city you search for. It uses an external weather API and Cubit for state management, ensuring smooth and reactive performance. The app features dynamic theming, with colors and UI elements adapting to the current weather state (e.g., sunny, cloudy, or rainy), creating an engaging user experience. This project highlights my expertise in Flutter development, API integration, state management, and responsive UI design."
