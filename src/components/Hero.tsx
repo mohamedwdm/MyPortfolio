@@ -36,11 +36,14 @@ export default function Hero() {
           variants={fadeInUp}
         >
           <div className="absolute -inset-1.5 bg-gradient-to-tr from-purple-600 via-blue-500 to-cyan-400 rounded-full blur opacity-50" />
-          <div className="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-white dark:border-gray-900 shadow-xl">
+          <div className="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-white dark:border-gray-900 shadow-xl bg-gray-100 dark:bg-gray-800">
             <img
               src="/mo4.png"
               alt="Mohamed Awad"
               className="w-full h-full object-cover"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
         </motion.div>
