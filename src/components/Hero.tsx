@@ -49,7 +49,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div className="flex flex-col items-center font-outfit" variants={fadeInUp}>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2 mb-3"
@@ -100,7 +100,7 @@ export default function Hero() {
 
           <p className="mb-6 text-sm md:text-base font-normal text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed font-inter">
             I'm passionate about building robust and efficient systems, focusing on both
-            <span className="text-purple-600 font-semibold italic"> Frontend</span> and 
+            <span className="text-purple-600 font-semibold italic"> Frontend</span> and
             <span className="text-blue-600 font-semibold italic"> Backend</span> development with strong software engineering fundamentals.
           </p>
         </motion.div>
@@ -110,7 +110,7 @@ export default function Hero() {
           <motion.a
             href="#resume"
             onClick={(e) => scrollToSection(e, 'resume')}
-            animate={{ 
+            animate={{
               y: [0, -5, 0],
               boxShadow: [
                 "0 10px 15px -3px rgba(147, 51, 234, 0.3)",
@@ -124,19 +124,19 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600" />
-            
+
             {/* Automatic Shimmer Effect */}
-            <motion.div 
+            <motion.div
               animate={{ x: ["-100%", "200%"] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" 
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
             />
-            
+
             <span className="relative z-10 flex items-center gap-2">
-              View My Resume 
+              View My Resume
             </span>
           </motion.a>
-          
+
           {/* Contact Me Button - Breathing Glow */}
           <motion.a
             href="#contact"
@@ -147,10 +147,10 @@ export default function Hero() {
             whileHover={{ scale: 1.05, backgroundColor: "rgba(147, 51, 234, 0.05)" }}
             whileTap={{ scale: 0.95 }}
           >
-            <motion.div 
+            <motion.div
               animate={{ opacity: [0.2, 0.6, 0.2] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -inset-[2px] bg-gradient-to-r from-purple-600/30 to-blue-600/30 rounded-full blur-sm" 
+              className="absolute -inset-[2px] bg-gradient-to-r from-purple-600/30 to-blue-600/30 rounded-full blur-sm"
             />
             <div className="absolute inset-0 border-2 border-purple-200 dark:border-purple-900/30 rounded-full" />
             <span className="relative z-10">Contact Me</span>
