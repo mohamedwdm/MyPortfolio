@@ -4,6 +4,9 @@ export interface TimelineItem {
   company: string;
   description: string;
   icon: 'work' | 'education';
+  location?: string;
+  badge?: string;
+  points?: { title: string; text: string }[];
 }
 
 export interface ProjectItem {
@@ -19,4 +22,11 @@ export interface ProjectItem {
   //   features?: string[];
   //   impact?: string;
    };
+}
+
+export interface CertificationItem {
+  title: string;
+  issuer: string;
+  date: string;
+  link?: string;
 }

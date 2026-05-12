@@ -1,8 +1,9 @@
-import { Menu, X, /*Github,*/ Linkedin, Mail, Sun, Moon } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Sun, Moon, Database } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') || 'light';
@@ -19,6 +20,14 @@ export default function Navbar() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
@@ -32,63 +41,86 @@ export default function Navbar() {
         block: 'start'
       });
     }
-    setIsOpen(false); // Close mobile menu after clicking
+    setIsOpen(false);
   };
 
+  const navLinks = [
+    { name: 'Home', href: 'hero' },
+    { name: 'Skills', href: 'skills' },
+    { name: 'Experience', href: 'experience' },
+    { name: 'Projects', href: 'projects' },
+    { name: 'Certifications', href: 'certifications' },
+    { name: 'Resume', href: 'resume' },
+    { name: 'Contact', href: 'contact' },
+  ];
+
   return (
-    <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 shadow-sm">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-[#f7f6ff]/70 dark:bg-gray-900/70 backdrop-blur-md py-2 shadow-lg' 
+        : 'bg-transparent py-4'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
           <a 
             href="#hero" 
             onClick={(e) => scrollToSection(e, 'hero')}
-            className="text-2xl font-bold hover:text-purple-600 text-gray-900 dark:text-white"
+            className="flex items-center space-x-2 group"
           >
-            Portfolio
+            <div className="p-1.5 bg-indigo-600 rounded-lg text-white group-hover:bg-indigo-700 transition-colors">
+              <Database className="w-6 h-6" />
+            </div>
+            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+              <span className="text-indigo-600 font-black">&lt;</span>
+              <span className="mx-1">MY Portfolio</span>
+              <span className="text-indigo-600 font-black">/&gt;</span>
+            </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-9 w-full">
-            <div className="flex space-x-9 flex-1 justify-center">
-              <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-lg text-gray-900 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">About</a>
-              <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')} className="text-lg text-gray-900 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Skills</a>
-              <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="text-lg text-gray-900 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Projects</a>
-              <a href="#resume" onClick={(e) => scrollToSection(e, 'resume')} className="text-lg text-gray-900 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Resume</a>
-              <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-lg text-gray-900 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white transition-colors">Contact</a>
-            </div>
-            <div className="flex items-center space-x-5">
-              <a href="https://www.linkedin.com/in/mohamed-awad-801219345" target="_blank" rel="noopener noreferrer" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="mailto:mohamedawad46857@gmail.com" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white">
-                <Mail className="w-5 h-5" />
-              </a>
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center space-x-1 flex-1 justify-center px-10">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name}
+                href={`#${link.href}`} 
+                onClick={(e) => scrollToSection(e, link.href)} 
+                className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white transition-all hover:scale-105"
               >
-                {theme === 'light' ? (
-                  <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" />
-                ) : (
-                  <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white" />
-                )}
-              </button>
-            </div>
+                {link.name}
+              </a>
+            ))}
           </div>
 
-          {/* Mobile Navigation Button */}
-          <div className="md:hidden flex items-center space-x-4">
+          {/* Action Icons */}
+          <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle theme"
             >
-              {theme === 'light' ? (
-                <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-              ) : (
-                <Sun className="w-5 h-5 text-gray-300" />
-              )}
+              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 dark:text-gray-300">
+            
+            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1" />
+            
+            <a href="https://github.com/mohamedwdm" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="https://www.linkedin.com/in/mohamed-awad-801219345" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="mailto:mohamedawad46857@gmail.com" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
+              <Mail className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden flex items-center">
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
@@ -96,22 +128,23 @@ export default function Navbar() {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="flex flex-col space-y-4 px-2 pt-2 pb-3">
-              <div className="flex flex-col space-y-2">
-                <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
-                <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')} className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">Skills</a>
-                <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
-                <a href="#resume" onClick={(e) => scrollToSection(e, 'resume')} className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">Resume</a>
-                <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
-                <div className="flex space-x-4 px-3 py-2">
-                  <a href="https://www.linkedin.com/in/mohamed-awad-801219345" target="_blank" rel="noopener noreferrer" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="mailto:mohamedawad46857@gmail.com" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-white">
-                    <Mail className="w-5 h-5" />
-                  </a>
-                </div>
+          <div className="lg:hidden mt-4 bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 p-4 absolute left-4 right-4 animate-in fade-in slide-in-from-top-4">
+            <div className="flex flex-col space-y-2">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name}
+                  href={`#${link.href}`} 
+                  onClick={(e) => scrollToSection(e, link.href)} 
+                  className="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-white rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <div className="pt-4 mt-2 border-t border-gray-100 dark:border-gray-800 flex justify-around">
+                <button onClick={toggleTheme} className="p-3 text-gray-600 dark:text-gray-400"><Moon className="w-6 h-6" /></button>
+                <a href="#" className="p-3 text-gray-600 dark:text-gray-400"><Github className="w-6 h-6" /></a>
+                <a href="#" className="p-3 text-gray-600 dark:text-gray-400"><Linkedin className="w-6 h-6" /></a>
+                <a href="#" className="p-3 text-gray-600 dark:text-gray-400"><Mail className="w-6 h-6" /></a>
               </div>
             </div>
           </div>

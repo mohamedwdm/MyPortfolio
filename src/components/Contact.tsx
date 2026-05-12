@@ -41,7 +41,7 @@ export default function Contact() {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          Get In Touch
+          Get In <span className="text-purple-600">Touch</span>
         </motion.h2>
         
         <motion.div 

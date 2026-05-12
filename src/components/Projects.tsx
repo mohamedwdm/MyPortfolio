@@ -22,11 +22,11 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Featured Projects
+          Featured  <span className="text-purple-600">Projects</span>
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={{
             hidden: { opacity: 0 },
             show: {
@@ -45,60 +45,58 @@ export default function Projects() {
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0 },
               }}
-              whileHover={{ y: -8 }}
               onClick={() => setSelectedProject(project)}
-              className="group relative bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg cursor-pointer"
+              className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer border border-gray-100 dark:border-gray-800"
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="relative aspect-video overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
                 />
+                
+                {/* Overlay with Buttons */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-4">
+                  {project.live && (
+                    <motion.a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white text-gray-900 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink className="w-6 h-6" />
+                    </motion.a>
+                  )}
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-white text-gray-900 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 delay-75"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Github className="w-6 h-6" />
+                  </motion.a>
+                </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <div className="p-5">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 font-outfit">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-5 text-sm leading-relaxed line-clamp-3">
                   {project.breif}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm"
+                      className="px-3 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-full text-[12px] font-medium border border-purple-100 dark:border-purple-800/30"
                     >
                       {tech}
                     </span>
                   ))}
-                </div>
-
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Github className="w-5 h-5" />
-                    Code
-                  </a>
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                      Live Demo
-                    </a>
-                  )}
                 </div>
               </div>
             </motion.div>

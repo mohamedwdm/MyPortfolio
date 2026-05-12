@@ -1,20 +1,24 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
+
 import Skills from './components/Skills';
+import Timeline from './components/Timeline';
 import Projects from './components/Projects';
+import Certifications from './components/Certifications';
+import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Resume from './components/Resume';
 
 function App() {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="bg-white dark:bg-gray-950 transition-colors duration-200">
       <Navbar />
       <Hero />
-      <About />
+
       <Skills />
+      <Timeline />
       <Projects />
+      <Certifications />
       <Resume />
       <Contact />
       <Footer />

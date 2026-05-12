@@ -1,33 +1,57 @@
-import { Code, Database, TabletSmartphone, Globe, Server } from 'lucide-react';
+import { Code, TabletSmartphone, Globe, Server, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const skills = [
   {
-    category: 'Mobile App Development',
-    icon: TabletSmartphone,
-    skills: ['Flutter', 'Dart','Firebase','REST APIs'],
-  },
-  {
-    category: 'Frontend Development',
-    icon: Globe,
-    skills: ['HTML', 'CSS', 'JavaScript'],
-  },
-  {
-    category: 'Backend Development',
-    icon: Server,
-    skills: ['Python', 'Django', 'REST APIs'],
-  },
-  {
-    category: 'Database',
-    icon: Database,
-    skills: ['MS SQL Server', 'Firebase', 'Database Design', 'Database Management System'],
-  },
-  {
     category: 'Programming languages',
     icon: Code,
     skills: ['C++', 'Java', 'Python', 'Dart', 'JavaScript', 'HTML/CSS'],
   },
+  {
+    category: 'Mobile App Development & Frontend ',
+    icon: TabletSmartphone,
+    skills: ['Flutter', 'Dart' ,'Cubit (Bloc)','Responsive UI Design','HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    category: 'Backend & DataBase',
+    icon: Server,
+    skills: ['Spring Boot', 'Django', 'REST APIs' , 'MS SQL Server', 'Firebase', 'Supabase','Hive', 'Database Design', 'Database Management System'],
+  },
+  {
+  category: 'Engineering & Architecture',
+  icon: Globe,
+  skills: [
+    'Clean Architecture',
+    'Microservices',
+    'SOLID Principles',
+    'Design Patterns',
+    'OOP',
+    'Software Architecture',
+    'Agile & Scrum',
+    'Problem Solving',
+    'System Design'
+  ],
+},
+{
+  category: 'Soft Skills',
+  icon: Users,
+  skills: [
+    'Problem-Solving',
+    'Team Collaboration',
+    'Technical Analysis',
+    'Time Management',
+    'Communication Skills',
+    'Critical Thinking',
+    'Adaptability',
+    'Leadership',
+    'Presentation Skills',
+    'Attention to Detail',
+    'Fast Learning',
+    'Project Coordination'
+  ],
+},
+
 ];
 
 export default function Skills() {
@@ -41,7 +65,7 @@ export default function Skills() {
           whileInView="animate"
           viewport={{ once: true }}
         >
-          Skills & Expertise
+         My <span className="text-purple-600">Skills</span> 
         </motion.h2>
         
         <motion.div 

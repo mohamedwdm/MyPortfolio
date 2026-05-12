@@ -1,69 +1,88 @@
-import { Briefcase, GraduationCap } from 'lucide-react';
+import { Briefcase, GraduationCap, MapPin, Calendar, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { timelineData } from '../data/timeline';
+import { fadeInUp } from '../utils/animations';
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-24 bg-[#f8f9fa] dark:bg-gray-950 transition-colors duration-200">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
-          className="text-3xl md:text-4xl font-bold text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl md:text-5xl font-bold text-center mb-20 text-gray-900 dark:text-white"
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
           viewport={{ once: true }}
         >
-          Experience & Education
+          Work <span className="text-purple-600">Experience</span>
         </motion.h2>
         
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200" />
-
-          <div className="space-y-12">
-            {timelineData.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-              >
-                {/* Content */}
-                <div className="w-1/2 pr-8 pl-8">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className={`bg-white p-6 rounded-lg shadow-md ${
-                      index % 2 === 0 ? 'text-right' : 'text-left'
-                    }`}
-                  >
-                    <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium mb-2">
-                      {item.year}
-                    </span>
-                    <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-indigo-600 font-medium">{item.company}</p>
-                    <p className="text-gray-600 mt-2">{item.description}</p>
-                  </motion.div>
+        <div className="space-y-8">
+          {timelineData.map((item, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white dark:bg-gray-900 rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl transition-all duration-300 relative group"
+            >
+              {/* Badge & Date - Top Right */}
+              <div className="md:absolute top-8 right-8 flex flex-col items-start md:items-end mb-4 md:mb-0 gap-2">
+                {item.badge && (
+                  <span className="px-4 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs font-bold tracking-wide border border-blue-100 dark:border-blue-800/30">
+                    {item.badge}
+                  </span>
+                )}
+                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm font-medium">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  {item.year}
                 </div>
+              </div>
 
-                {/* Icon */}
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center z-10"
-                >
-                  {item.icon === 'work' ? (
-                    <Briefcase className="w-6 h-6 text-white" />
-                  ) : (
-                    <GraduationCap className="w-6 h-6 text-white" />
+              {/* Title & Company Info */}
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 transition-colors">
+                  {item.title}
+                </h3>
+                
+                <div className="flex flex-wrap gap-y-2 gap-x-6">
+                  <div className="flex items-center text-gray-700 dark:text-gray-300 font-semibold">
+                    <Building2 className="w-4 h-4 mr-2 text-gray-400" />
+                    {item.company}
+                  </div>
+                  {item.location && (
+                    <div className="flex items-center text-gray-500 dark:text-gray-400">
+                      <MapPin className="w-4 h-4 mr-2 text-gray-400" />
+                      {item.location}
+                    </div>
                   )}
-                </motion.div>
+                </div>
+              </div>
 
-                {/* Empty space for the other side */}
-                <div className="w-1/2" />
-              </motion.div>
-            ))}
-          </div>
+              {/* Description / Points */}
+              <div className="space-y-4">
+                {item.points ? (
+                  item.points.map((point, pIndex) => (
+                    <div key={pIndex} className="flex items-start group/point">
+                      <div className="mr-3 mt-2.5 w-4 h-[2px] bg-purple-400 rounded-full group-hover/point:w-6 transition-all duration-300" />
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-[15px]">
+                        <span className="font-bold text-gray-800 dark:text-gray-200">{point.title}:</span> {point.text}
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex items-start">
+                    <div className="mr-3 mt-2.5 w-4 h-[2px] bg-purple-400 rounded-full" />
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-[15px]">
+                      {item.description}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
