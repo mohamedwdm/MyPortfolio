@@ -55,10 +55,8 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-[#f7f6ff]/70 dark:bg-gray-900/70 backdrop-blur-md py-2 shadow-lg' 
-        : 'bg-transparent py-4'
+    <nav className={`fixed w-full z-50 transition-all duration-300 bg-[#f7f6ff]/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 ${
+      isScrolled ? 'py-2 shadow-lg' : 'py-4 shadow-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -92,8 +90,8 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Action Icons */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Action Icons & Theme Toggle */}
+          <div className="flex items-center space-x-2 md:space-x-4">
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -102,27 +100,30 @@ export default function Navbar() {
               {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
             
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1" />
-            
-            <a href="https://github.com/mohamedwdm" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="https://www.linkedin.com/in/mohamed-awad-801219345" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a href="mailto:mohamedawad46857@gmail.com" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
-              <Mail className="w-5 h-5" />
-            </a>
-          </div>
+            {/* Desktop Social Links */}
+            <div className="hidden md:flex items-center space-x-2">
+              <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1" />
+              
+              <a href="https://github.com/mohamedwdm" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/in/mohamed-awad-801219345" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="mailto:mohamedawad46857@gmail.com" className="p-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-white transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
-            <button 
-              onClick={() => setIsOpen(!isOpen)} 
-              className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden flex items-center">
+              <button 
+                onClick={() => setIsOpen(!isOpen)} 
+                className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -141,10 +142,9 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="pt-4 mt-2 border-t border-gray-100 dark:border-gray-800 flex justify-around">
-                <button onClick={toggleTheme} className="p-3 text-gray-600 dark:text-gray-400"><Moon className="w-6 h-6" /></button>
-                <a href="#" className="p-3 text-gray-600 dark:text-gray-400"><Github className="w-6 h-6" /></a>
-                <a href="#" className="p-3 text-gray-600 dark:text-gray-400"><Linkedin className="w-6 h-6" /></a>
-                <a href="#" className="p-3 text-gray-600 dark:text-gray-400"><Mail className="w-6 h-6" /></a>
+                <a href="https://github.com/mohamedwdm" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600"><Github className="w-6 h-6" /></a>
+                <a href="https://www.linkedin.com/in/mohamed-awad-801219345" target="_blank" rel="noopener noreferrer" className="p-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600"><Linkedin className="w-6 h-6" /></a>
+                <a href="mailto:mohamedawad46857@gmail.com" className="p-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600"><Mail className="w-6 h-6" /></a>
               </div>
             </div>
           </div>

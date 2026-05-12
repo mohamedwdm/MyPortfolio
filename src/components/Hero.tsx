@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative bg-[#f6f5ff] dark:bg-[#0f0f1a] transition-colors duration-200 overflow-hidden py-10"
+      className="min-h-screen flex items-center justify-center relative bg-[#f6f5ff] dark:bg-[#0f0f1a] transition-colors duration-200 overflow-hidden pt-16 pb-5"
     >
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -36,7 +36,7 @@ export default function Hero() {
           variants={fadeInUp}
         >
           <div className="absolute -inset-1.5 bg-gradient-to-tr from-purple-600 via-blue-500 to-cyan-400 rounded-full blur opacity-50" />
-          <div className="relative w-28 h-28 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-white dark:border-gray-900 shadow-xl">
+          <div className="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-white dark:border-gray-900 shadow-xl">
             <img
               src="/mo4.png"
               alt="Mohamed Awad"
