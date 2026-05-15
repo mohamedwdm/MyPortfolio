@@ -6,7 +6,7 @@ const skills = [
   {
     category: 'Programming languages',
     icon: Code,
-    skills: ['C++', 'Java', 'Python', 'Dart', 'JavaScript', 'HTML/CSS'],
+    skills: ['C++', 'Java', 'Python', 'Dart','PHP','JavaScript', 'HTML/CSS'],
   },
   {
     category: 'Mobile App Development & Frontend ',
@@ -16,7 +16,7 @@ const skills = [
   {
     category: 'Backend & DataBase',
     icon: Server,
-    skills: ['Spring Boot', 'Django', 'REST APIs' , 'MS SQL Server', 'Firebase', 'Supabase','Hive', 'Database Design', 'Database Management System'],
+    skills: ['Laravel','Spring Boot', 'REST APIs' , 'MS SQL Server', 'Firebase', 'Supabase','Hive', 'Database Design', 'Database Management System'],
   },
   {
   category: 'Engineering & Architecture',

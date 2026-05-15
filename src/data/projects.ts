@@ -1,7 +1,7 @@
 import { ProjectItem } from "../types";
 
 export const projectsData: ProjectItem[] = [
- 
+  
   {
     title: "UniTask - Student Task Manager",
     breif:
@@ -94,6 +94,28 @@ export const projectsData: ProjectItem[] = [
     details: {
       descreption:
         "QuickNotes is a cross-platform Flutter application built for efficient note management with a strong focus on speed, simplicity, and offline accessibility. The application uses Hive for lightweight local data storage and supports creating, editing, and deleting notes through a clean Material Design interface. Additional features include swipe-to-delete gestures, confirmation dialogs for safe note management, and optimized performance for a seamless user experience. This project highlights my expertise in Flutter development, local database management, responsive UI design, and mobile application optimization."
+    }
+  },
+  {
+    title: "Blog Management System (PHP & Laravel)",
+    breif:
+      "A full-featured blog platform and admin dashboard with real-time synchronization, role-based access control, and interactive comment management.",
+    image: "/blog_management.png",
+    tech: [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "CRUD",
+      "Authentication",
+      
+    ],
+    github: "https://github.com/mohamedwdm/NTI_Tasks/tree/main/NTI_Final_Project",
+    details: {
+      descreption:
+        "Developed a comprehensive blog platform and admin dashboard connected to a unified MySQL database using PHP and Laravel. The system implements full CRUD operations for posts with real-time synchronization between the public website and the administrative dashboard. It features robust authentication and role-based access control (RBAC), allowing for secure content management. Users can engage with posts through a comment system, while admins have dedicated tools to manage, moderate, and oversee all content and user interactions."
     }
   },
    {

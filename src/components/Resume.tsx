@@ -58,7 +58,7 @@ export default function Resume() {
 
             <div className="flex flex-col sm:flex-row justify-center gap-5">
               <motion.a
-                href="https://drive.google.com/file/d/18NMhUFRNYcdJtsOmyG8cdHmb6HYWIQ3c/view?usp=sharing"
+                href="https://drive.google.com/file/d/1DP9aE_KXVfBpm1DxVrDksDE7FkfCC46N/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
